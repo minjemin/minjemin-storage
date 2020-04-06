@@ -31,5 +31,12 @@
     },
     "scripts": {
         "tdd": "bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                " Minjemin\\Flysystem\\MinjeminStorage\\MinjeminStorageServiceProvider"
+            ]
+        }
     }
 }

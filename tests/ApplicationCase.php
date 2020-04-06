@@ -7,6 +7,7 @@ use Minjemin\Flysystem\MinjeminStorage\MinjeminClient;
 use Minjemin\Flysystem\MinjeminStorage\MinjeminStorageAdapter as Adapter;
 use PHPUnit\Framework\TestCase;
 use League\Flysystem\Filesystem;
+use Zttp\Zttp;
 
 class ApplicationCase extends TestCase
 {
@@ -43,5 +44,11 @@ class ApplicationCase extends TestCase
 
     public function getContentFile(){
         return file_get_contents(self::IMAGE);
+    }
+
+
+    public function urlExists($url) {
+        $res = Zttp::get($url);
+        return $res->isOk();
     }
 }

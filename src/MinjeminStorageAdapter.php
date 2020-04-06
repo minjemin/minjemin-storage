@@ -95,7 +95,7 @@ class MinjeminStorageAdapter implements AdapterInterface
      */
     public function deleteDir($dirname)
     {
-       return $this->client->deleteImage($dirname);
+        return $this->client->deleteImage($dirname);
     }
 
     /**
@@ -119,7 +119,7 @@ class MinjeminStorageAdapter implements AdapterInterface
      */
     public function has($path)
     {
-        return (bool) $this->client->hasImage($path);
+        return (bool)$this->client->hasImage($path);
     }
 
     /**
@@ -190,5 +190,21 @@ class MinjeminStorageAdapter implements AdapterInterface
     public function getVisibility($path)
     {
         return false;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUrl($path)
+    {
+        return $this->client->getImages($path);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUrlConversion($path, $conversion)
+    {
+        return $this->client->getImages($path, $conversion);
     }
 }

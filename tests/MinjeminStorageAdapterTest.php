@@ -55,8 +55,26 @@ class MinjeminStorageAdapterTest extends ApplicationCase
         $this->assertTrue($content == $this->getContentFile());
     }
 
+
     /**
-     * @depends test_read_file
+     * @depends test_success_upload_file
+     * Read url on api and get conversion file
+     * @return void
+     */
+    public function test_get_url_and_conversion_file()
+    {
+        $adapter = self::$adapter->getAdapter();
+        $url = $adapter->getUrl(self::$id);
+
+        $this->assertTrue(file_get_contents($url) == $this->getContentFile());
+
+        $conversionUrl = $adapter->getUrlConversion(self::$id, 'w-500');
+
+        $this->assertTrue($this->urlExists($conversionUrl));
+    }
+
+    /**
+     * @depends test_get_url_and_conversion_file
      * Delete file on api
      * @return void
      * @throws FileNotFoundException
@@ -68,5 +86,4 @@ class MinjeminStorageAdapterTest extends ApplicationCase
 
         $this->assertTrue($content == $this->getContentFile());
     }
-
 }

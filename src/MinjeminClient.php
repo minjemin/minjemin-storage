@@ -46,9 +46,9 @@ class MinjeminClient
         return $response->json();
     }
 
-    public function getImages($path)
+    public function getImages($path, $conversion = 'original')
     {
-        return "$this->apiUrl/assets/original/${path}";
+        return "$this->apiUrl/assets/$conversion/${path}";
     }
 
     public function hasImage($path)
@@ -66,7 +66,8 @@ class MinjeminClient
         return $response->json()['message'];
     }
 
-    public function deleteImage($path) {
+    public function deleteImage($path)
+    {
         $response = Zttp::withHeaders([
             'Authorization' => ['Basic ' . $this->credentials],
         ])->delete("$this->apiUrl/files/destroy", [

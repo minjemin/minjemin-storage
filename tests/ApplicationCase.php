@@ -26,7 +26,7 @@ class ApplicationCase extends TestCase
         $dotenv->load();
 
         self::$config = [
-            'api_url' => 'http://localhost:5000',
+            'api_url' => getenv('API_URL'),
             'api_username' => getenv('API_KEY'),
             'api_password' => getenv('API_SECRET')
         ];

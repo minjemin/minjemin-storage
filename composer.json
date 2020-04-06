@@ -35,7 +35,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                " Minjemin\\Flysystem\\MinjeminStorage\\MinjeminStorageServiceProvider"
+                "Minjemin\\Flysystem\\MinjeminStorage\\MinjeminStorageServiceProvider"
             ]
         }
     }
